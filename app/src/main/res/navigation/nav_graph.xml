@@ -27,7 +27,7 @@
     </fragment>
     <activity
         android:id="@+id/loginAct"
-        android:name="com.example.login_keeper1.LoginAct"
+        android:name="com.example.login_keeper1.AuthorizationFragment"
         android:label="LoginAct" >
         <action
             android:id="@+id/TP1"

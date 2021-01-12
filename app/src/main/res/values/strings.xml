@@ -10,4 +10,12 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_main2">MainActivity</string>
+
+
+    <string name="login_description">Please enter your password in order to encrypt your stored passwords</string>
+    <string name="login_hint">Please remember: if you forgot your password, you can not recover it anymore.</string>
+    <string name="login_input_hint">Login</string>
+    <string name="password_input_hint">Password</string>
+    <string name="register">Зареєструватись</string>
+    <string name="login">Увійти</string>
 </resources>
