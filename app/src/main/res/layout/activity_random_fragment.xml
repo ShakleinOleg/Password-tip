@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RandomFragment">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar1"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <TextView 
+        android:id="@+id/Password" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:hint="password" 
+        android:inputType="textCapWords" 
+        android:textSize="70sp" 
+        tools:ignore="MissingConstraints" 
+        tools:layout_editor_absoluteX="53dp" 
+        tools:layout_editor_absoluteY="85dp" />
+
+    <Button
+        android:id="@+id/Genbutt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="      Generate      "
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="138dp"
+        tools:layout_editor_absoluteY="243dp" />
+
+    <Switch
+        android:id="@+id/switch2"
+        android:layout_width="0dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:text="A-Z                                   "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="361dp"
+        tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml" />
+
+    <Switch
+        android:id="@+id/switch3"
+        android:layout_width="0dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:text="Custom character-set"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="501dp"
+        tools:ignore="MissingConstraints" />
+
+    <Switch
+        android:id="@+id/switch4"
+        android:layout_width="0dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:text="A-Z"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="315dp"
+        tools:ignore="MissingConstraints" />
+
+    <Switch
+        android:id="@+id/switch5"
+        android:layout_width="0dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:text="0-9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="407dp"
+        tools:ignore="MissingConstraints" />
+
+    <SeekBar 
+        android:id="@+id/LentBar" 
+        style="@style/Widget.AppCompat.SeekBar.Discrete" 
+        android:layout_width="406dp" 
+        android:layout_height="19dp" 
+        android:layout_marginStart="20dp" 
+        android:layout_marginLeft="20dp" 
+        android:layout_marginEnd="20dp" 
+        android:layout_marginRight="20dp" 
+        android:max="20" 
+        android:progress="1" 
+        app:layout_constraintEnd_toEndOf="parent" 
+        app:layout_constraintStart_toStartOf="parent" 
+        tools:layout_editor_absoluteY="207dp"
+        tools:ignore="MissingConstraints" />
+
+    <Switch
+        android:id="@+id/switch6"
+        android:layout_width="0dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:text="%#!..."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="455dp"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/etWidth"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:hint="Input word here                                  "
+        android:inputType="textCapWords"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="DuplicateIds,MissingConstraints"
+        tools:layout_editor_absoluteY="532dp" />
+
+    <Button
+        android:id="@+id/register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/register"
+        app:layout_constraintBottom_toTopOf="@+id/appBarLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar2"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

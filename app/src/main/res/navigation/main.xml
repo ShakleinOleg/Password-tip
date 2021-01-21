@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     app:startDestination="@id/authorizationFragment">
 
@@ -15,5 +16,66 @@
     <fragment
         android:id="@+id/mainPageFragment"
         android:name="com.example.login_keeper1.MainPageFragment"
-        android:label="MainPageFragment" />
+        android:label="MainPageFragment" >
+        <action
+            android:id="@+id/main2"
+            app:destination="@id/menuFragment" />
+        <action
+            android:id="@+id/main3"
+            app:destination="@id/pageFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.example.login_keeper1.MenuFragment"
+        android:label="activity_menu_fragment"
+        tools:layout="@layout/activity_menu_fragment" >
+        <action
+            android:id="@+id/main4"
+            app:destination="@id/randomFragment" />
+        <action
+            android:id="@+id/main5"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/main6"
+            app:destination="@id/passwordFragment" />
+        <action
+            android:id="@+id/main11"
+            app:destination="@id/mainPageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pageFragment2"
+        android:name="com.example.login_keeper1.PageFragment2"
+        android:label="activity_page_fragment2"
+        tools:layout="@layout/activity_page_fragment2" >
+        <action
+            android:id="@+id/main7"
+            app:destination="@id/mainPageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/passwordFragment"
+        android:name="com.example.login_keeper1.PasswordFragment"
+        android:label="activity_password_fragment"
+        tools:layout="@layout/activity_password_fragment" >
+        <action
+            android:id="@+id/main10"
+            app:destination="@id/menuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/randomFragment"
+        android:name="com.example.login_keeper1.RandomFragment"
+        android:label="activity_random_fragment"
+        tools:layout="@layout/activity_random_fragment" >
+        <action
+            android:id="@+id/main8"
+            app:destination="@id/menuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.login_keeper1.SettingsFragment"
+        android:label="activity_settings_fragment"
+        tools:layout="@layout/activity_settings_fragment" >
+        <action
+            android:id="@+id/main9"
+            app:destination="@id/menuFragment" />
+    </fragment>
 </navigation>
