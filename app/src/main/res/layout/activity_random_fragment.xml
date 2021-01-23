@@ -52,12 +52,13 @@
         android:layout_marginLeft="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
+        android:enabled="true"
         android:text="A-Z                                   "
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="361dp"
-        tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml" />
+        tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml"
+        tools:layout_editor_absoluteY="361dp" />
 
     <Switch
         android:id="@+id/switch3"
@@ -82,12 +83,13 @@
         android:layout_marginLeft="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
+        android:enabled="true"
         android:text="A-Z"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="315dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="315dp" />
 
     <Switch
         android:id="@+id/switch5"
@@ -97,12 +99,13 @@
         android:layout_marginLeft="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
+        android:enabled="true"
         android:text="0-9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="407dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="407dp" />
 
     <SeekBar 
         android:id="@+id/LentBar" 
@@ -128,12 +131,13 @@
         android:layout_marginLeft="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
+        android:enabled="true"
         android:text="%#!..."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="455dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="455dp" />
 
     <EditText
         android:id="@+id/etWidth"

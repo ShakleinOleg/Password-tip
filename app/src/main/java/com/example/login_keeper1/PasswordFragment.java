@@ -18,11 +18,9 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+
 public class PasswordFragment extends Fragment {
             private Button mRegisterButton;
-            private TextView Password;
-            private SeekBar LentBar;
-            private Button Genbutt;
 
             @Nullable
             @Override
@@ -46,18 +44,5 @@ public class PasswordFragment extends Fragment {
 
             private void navigateToMenuFragment() {
                 NavHostFragment.findNavController(this).navigate(R.id.main10);
-            }
-
-            private static final int MIN_CODE = 33, MAX_CODE = 126;
-
-            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-            private static String process(int length){
-                StringBuilder builder = new StringBuilder();
-
-                for (int i = 0; i < length; i++){
-                    builder.append((char) ThreadLocalRandom.current().nextInt(MIN_CODE, MAX_CODE + 1));
-                }
-
-                return builder.toString();
             }
         }
