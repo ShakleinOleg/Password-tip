@@ -1,23 +1,19 @@
 package com.example.login_keeper1;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomFragment extends Fragment {
     private Button mRegisterButton;
@@ -33,7 +29,7 @@ public class RandomFragment extends Fragment {
         View view = inflater.inflate(R.layout.activity_random_fragment, container, false);
 
         mRegisterButton = view.findViewById(R.id.register);
-        Password = view.findViewById(R.id.Password);
+        Password = view.findViewById(R.id.passwoord);
         LentBar = view.findViewById(R.id.LentBar);
         Genbutt = view.findViewById(R.id.Genbutt);
 

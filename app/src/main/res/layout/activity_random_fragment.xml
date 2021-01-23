@@ -25,7 +25,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <TextView 
-        android:id="@+id/Password" 
+        android:id="@+id/88" 
         android:layout_width="wrap_content" 
         android:layout_height="wrap_content" 
         android:hint="password" 
@@ -140,7 +140,7 @@
         tools:layout_editor_absoluteY="455dp" />
 
     <EditText
-        android:id="@+id/etWidth"
+        android:id="@+id/88"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"

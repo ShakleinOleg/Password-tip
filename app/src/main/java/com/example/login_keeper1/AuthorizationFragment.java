@@ -24,7 +24,7 @@ public class AuthorizationFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
 
         mLoginInput = view.findViewById(R.id.login);
-        mPasswordInput = view.findViewById(R.id.password);
+        mPasswordInput = view.findViewById(R.id.passwoord);
         mRegisterButton = view.findViewById(R.id.register);
 
         mRegisterButton.setOnClickListener(new View.OnClickListener() {

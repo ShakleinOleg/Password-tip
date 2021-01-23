@@ -67,7 +67,7 @@
         tools:ignore="DuplicateIds,MissingConstraints" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/88"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"

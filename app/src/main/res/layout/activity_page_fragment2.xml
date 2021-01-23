@@ -32,8 +32,9 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="31dp"
         tools:layout_editor_absoluteY="446dp" />
+
     <EditText
-        android:id="@+id/etWidth"
+        android:id="@+id/Password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Password                                  "
@@ -42,7 +43,7 @@
         tools:layout_editor_absoluteX="29dp"
         tools:layout_editor_absoluteY="483dp" />
     <EditText
-        android:id="@+id/etWidth2"
+        android:id="@+id/Website"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Website                                  "
@@ -50,17 +51,19 @@
         tools:ignore="DuplicateIds,MissingConstraints"
         tools:layout_editor_absoluteX="31dp"
         tools:layout_editor_absoluteY="371dp" />
+
     <EditText
-        android:id="@+id/etWidth6"
+        android:id="@+id/Username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Username                                  "
         android:inputType="textCapWords"
         tools:ignore="DuplicateIds,MissingConstraints"
         tools:layout_editor_absoluteX="29dp"
-        tools:layout_editor_absoluteY="230dp" />
+        tools:layout_editor_absoluteY="245dp" />
+
     <EditText
-        android:id="@+id/etWidth8"
+        android:id="@+id/Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Title                                     "
@@ -68,8 +71,8 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="29dp"
         tools:layout_editor_absoluteY="126dp" />
+
     <TextView
-        android:id="@+id/Password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="title of this password "
@@ -78,7 +81,7 @@
         tools:layout_editor_absoluteX="31dp"
         tools:layout_editor_absoluteY="80dp" />
     <TextView
-        android:id="@+id/Password"
+        android:id="@+id/88"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Insert website"
@@ -87,7 +90,7 @@
         tools:layout_editor_absoluteX="31dp"
         tools:layout_editor_absoluteY="324dp" />
     <TextView
-        android:id="@+id/Password"
+        android:id="@+id/88"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Insert username"
@@ -95,7 +98,9 @@
         tools:ignore="DuplicateIds,MissingConstraints"
         tools:layout_editor_absoluteX="31dp"
         tools:layout_editor_absoluteY="193dp" />
+
     <Button
+        android:id="@+id/MainButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add to the database"
