@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".RandomFragment">
+    android:layout_height="match_parent">
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -24,135 +23,141 @@
             app:popupTheme="@style/AppTheme.PopupOverlay" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <TextView 
-        android:id="@+id/88" 
-        android:layout_width="wrap_content" 
-        android:layout_height="wrap_content" 
-        android:hint="password" 
-        android:inputType="textCapWords" 
-        android:textSize="70sp" 
-        tools:ignore="MissingConstraints" 
-        tools:layout_editor_absoluteX="53dp" 
-        tools:layout_editor_absoluteY="85dp" />
-
-    <Button
-        android:id="@+id/Genbutt"
+    <TextView
+        android:id="@+id/passwordTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="      Generate      "
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="138dp"
-        tools:layout_editor_absoluteY="243dp" />
+        android:layout_marginTop="32dp"
+        android:text="password"
+        android:textSize="70sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
-    <Switch
-        android:id="@+id/switch2"
+    <SeekBar
+        android:id="@+id/lentBar"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:layout_width="0dp"
-        android:layout_height="46dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:max="20"
+        android:progress="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordTitle" />
+
+    <Button
+        android:id="@+id/generate"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Generate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lentBar" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/lowerCaseSwitch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:enabled="true"
-        android:text="A-Z                                   "
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml"
-        tools:layout_editor_absoluteY="361dp" />
-
-    <Switch
-        android:id="@+id/switch3"
-        android:layout_width="0dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:text="Custom character-set"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="501dp"
-        tools:ignore="MissingConstraints" />
-
-    <Switch
-        android:id="@+id/switch4"
-        android:layout_width="0dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:enabled="true"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
         android:text="A-Z"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="315dp" />
+        app:layout_constraintTop_toBottomOf="@+id/generate" />
 
-    <Switch
-        android:id="@+id/switch5"
-        android:layout_width="0dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:enabled="true"
-        android:text="0-9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="407dp" />
-
-    <SeekBar 
-        android:id="@+id/LentBar" 
-        style="@style/Widget.AppCompat.SeekBar.Discrete" 
-        android:layout_width="406dp" 
-        android:layout_height="19dp" 
-        android:layout_marginStart="20dp" 
-        android:layout_marginLeft="20dp" 
-        android:layout_marginEnd="20dp" 
-        android:layout_marginRight="20dp" 
-        android:max="20" 
-        android:progress="1" 
-        app:layout_constraintEnd_toEndOf="parent" 
-        app:layout_constraintStart_toStartOf="parent" 
-        tools:layout_editor_absoluteY="207dp"
-        tools:ignore="MissingConstraints" />
-
-    <Switch
-        android:id="@+id/switch6"
-        android:layout_width="0dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:enabled="true"
-        android:text="%#!..."
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="455dp" />
-
-    <EditText
-        android:id="@+id/88"
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/upperCaseSwitch"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:hint="Input word here                                  "
+        android:enabled="true"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:text="A-Z"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lowerCaseSwitch" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/numberSwitch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:enabled="true"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:text="0-9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/upperCaseSwitch" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/specialCharsSwitch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:enabled="true"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:text="%#!..."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numberSwitch" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/customCharsetSwitch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:text="Custom character-set"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/specialCharsSwitch" />
+
+    <EditText
+        android:id="@+id/wordInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:hint="Input word here"
         android:inputType="textCapWords"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="DuplicateIds,MissingConstraints"
-        tools:layout_editor_absoluteY="532dp" />
+        app:layout_constraintTop_toBottomOf="@+id/customCharsetSwitch" />
 
     <Button
         android:id="@+id/register"

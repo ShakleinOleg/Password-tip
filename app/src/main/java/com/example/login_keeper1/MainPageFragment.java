@@ -5,30 +5,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import com.example.login_keeper1.storage.RoomPasswordsStorage;
+import com.example.login_keeper1.storage.entities.PasswordEntity;
+
+import java.util.List;
 
 public class MainPageFragment extends Fragment {
-
-    private static final String TAG = "ListDataActivity";
-
-    DatabaseHelper databaseHelper;
-    private TextView mLoginInput;
-    private Button mRegisterButton;
-    private Button mRegisterButton2;
-    private ListView ListView;
-    private Object DatabaseHelper;
+    private RecyclerView mRecyclerView;
+    private Button mMenuButton;
+    private Button mNewRecordButton;
+    private PasswordListAdapter mAdapter;
+    private RoomPasswordsStorage mStorage;
 
     @Nullable
     @Override
@@ -36,55 +32,47 @@ public class MainPageFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_main_page, container, false);
 
-        mRegisterButton = view.findViewById(R.id.register);
-        mRegisterButton2 = view.findViewById(R.id.register2);
-        ListView = view.findViewById(R.id.ListView);
-        DatabaseHelper = new DatabaseHelper(this);
+        mRecyclerView = view.findViewById(R.id.recyclerView);
 
-        mRegisterButton.setOnClickListener(new View.OnClickListener() {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        mRecyclerView.setLayoutManager(layoutManager);
+        mAdapter = new PasswordListAdapter();
+        mRecyclerView.setAdapter(mAdapter);
+
+        mMenuButton = view.findViewById(R.id.menu);
+        mNewRecordButton = view.findViewById(R.id.newRecord);
+
+
+        mMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 navigateToMenuFragment();
             }
         });
-        mRegisterButton2.setOnClickListener(new View.OnClickListener() {
+        mNewRecordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navigateToPageFragment2();
+                navigateToNewRecordFragment();
             }
         });
+
         populateListView();
         return view;
     }
 
     private void populateListView() {
-        Log.d(TAG, "populatedLastView: Displaying data in the ListView");
-        Cursor data = DatabaseHelper.GetData();
-        ArrayList<String> listData = new ArrayList<>();
-        while(data.moveToNext()){
-            ListData.add(data.getString(1));
-        }
+        LoginKeeperApplication appContext = ((LoginKeeperApplication) getContext().getApplicationContext());
+        mStorage = appContext.provideStorage();
 
-        ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_2, ListData);
-        ListView.setAdapter(adapter);
+        List<PasswordEntity> entities = mStorage.passwords();
+        mAdapter.submit(entities);
     }
-    private void toastMessage(String messages) {
-        Toast.makeText(this.messages, Toast.LENGTH_SHORT).show();
-    }
+
     private void navigateToMenuFragment() {
-        NavHostFragment.findNavController(this).navigate(R.id.main2);
+        NavHostFragment.findNavController(this).navigate(R.id.action_mainPageFragment_to_menuFragment);
     }
-    private void navigateToPageFragment2() {
-        NavHostFragment.findNavController(this).navigate(R.id.main3);
+
+    private void navigateToNewRecordFragment() {
+        NavHostFragment.findNavController(this).navigate(R.id.action_mainPageFragment_to_newRecordFragment);
     }
 }
-
-
-
-
-
-
-
-
-
-

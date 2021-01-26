@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingsFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar1"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <TextView
+        android:id="@+id/appearanceCaption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:text="Appearance settings"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+
+    <CheckBox
+        android:id="@+id/hidePasswordBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:text="Hide passwords"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appearanceCaption" />
+
+    <CheckBox
+        android:id="@+id/showCopyBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Show copy buttons"
+        app:layout_constraintEnd_toEndOf="@+id/hidePasswordBox"
+        app:layout_constraintStart_toStartOf="@+id/hidePasswordBox"
+        app:layout_constraintTop_toBottomOf="@+id/hidePasswordBox" />
+
+    <CheckBox
+        android:id="@+id/showNotificationBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Show notification icon"
+        app:layout_constraintEnd_toEndOf="@+id/showCopyBox"
+        app:layout_constraintStart_toStartOf="@+id/showCopyBox"
+        app:layout_constraintTop_toBottomOf="@+id/showCopyBox" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/darkModeSwitch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Enable dark mode"
+        app:layout_constraintEnd_toEndOf="@+id/showNotificationBox"
+        app:layout_constraintStart_toStartOf="@+id/showNotificationBox"
+        app:layout_constraintTop_toBottomOf="@+id/showNotificationBox" />
+
+    <TextView
+        android:id="@+id/securityCaption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="Security settings"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/darkModeSwitch" />
+
+    <CheckBox
+        android:id="@+id/hideAutoclearingBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="History autoclearing"
+        app:layout_constraintEnd_toEndOf="@+id/hidePasswordBox"
+        app:layout_constraintStart_toStartOf="@+id/hidePasswordBox"
+        app:layout_constraintTop_toBottomOf="@+id/securityCaption" />
+
+    <CheckBox
+        android:id="@+id/allowScreenshotBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Allow screenshots"
+        app:layout_constraintEnd_toEndOf="@+id/hideAutoclearingBox"
+        app:layout_constraintStart_toStartOf="@+id/hideAutoclearingBox"
+        app:layout_constraintTop_toBottomOf="@+id/hideAutoclearingBox" />
+
+    <CheckBox
+        android:id="@+id/destructionBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Self destruction"
+        app:layout_constraintEnd_toEndOf="@+id/allowScreenshotBox"
+        app:layout_constraintStart_toStartOf="@+id/allowScreenshotBox"
+        app:layout_constraintTop_toBottomOf="@+id/allowScreenshotBox" />
+
+    <Button
+        android:id="@+id/acceptChanges"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Accept changes"
+        app:layout_constraintBottom_toTopOf="@+id/appBarLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar2"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

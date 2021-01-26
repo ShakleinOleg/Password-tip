@@ -16,66 +16,57 @@
     <fragment
         android:id="@+id/mainPageFragment"
         android:name="com.example.login_keeper1.MainPageFragment"
-        android:label="MainPageFragment" >
+        android:label="MainPageFragment"
+        tools:layout="@layout/fragment_main_page">
         <action
-            android:id="@+id/main2"
-            app:destination="@id/menuFragment" />
+            android:id="@+id/action_mainPageFragment_to_menuFragment"
+            app:destination="@id/menuFragment"
+            app:popUpTo="@id/mainPageFragment" />
         <action
-            android:id="@+id/main3"
-            app:destination="@id/pageFragment2" />
+            android:id="@+id/action_mainPageFragment_to_newRecordFragment"
+            app:destination="@id/newRecordFragment"
+            app:popUpTo="@id/mainPageFragment" />
     </fragment>
     <fragment
         android:id="@+id/menuFragment"
         android:name="com.example.login_keeper1.MenuFragment"
-        android:label="activity_menu_fragment"
-        tools:layout="@layout/activity_menu_fragment" >
+        android:label="MenuFragment"
+        tools:layout="@layout/fragment_menu" >
         <action
-            android:id="@+id/main4"
-            app:destination="@id/randomFragment" />
+            android:id="@+id/action_menuFragment_to_randomFragment"
+            app:destination="@id/randomFragment"
+            app:popUpTo="@id/menuFragment" />
         <action
-            android:id="@+id/main5"
-            app:destination="@id/settingsFragment" />
+            android:id="@+id/action_menuFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment"
+            app:popUpTo="@id/menuFragment" />
         <action
-            android:id="@+id/main6"
-            app:destination="@id/passwordFragment" />
-        <action
-            android:id="@+id/main11"
-            app:destination="@id/mainPageFragment" />
+            android:id="@+id/action_menuFragment_to_passwordFragment"
+            app:destination="@id/passwordFragment"
+            app:popUpTo="@id/menuFragment" />
     </fragment>
     <fragment
-        android:id="@+id/pageFragment2"
-        android:name="com.example.login_keeper1.PageFragment2"
+        android:id="@+id/newRecordFragment"
+        android:name="com.example.login_keeper1.NewRecordFragment"
         android:label="activity_page_fragment2"
-        tools:layout="@layout/activity_page_fragment2" >
-        <action
-            android:id="@+id/main7"
-            app:destination="@id/mainPageFragment" />
+        tools:layout="@layout/new_record_fragment" >
     </fragment>
     <fragment
         android:id="@+id/passwordFragment"
         android:name="com.example.login_keeper1.PasswordFragment"
-        android:label="activity_password_fragment"
-        tools:layout="@layout/activity_password_fragment" >
-        <action
-            android:id="@+id/main10"
-            app:destination="@id/menuFragment" />
+        android:label="PasswordFragment"
+        tools:layout="@layout/fragment_change_password" >
     </fragment>
     <fragment
         android:id="@+id/randomFragment"
         android:name="com.example.login_keeper1.RandomFragment"
-        android:label="activity_random_fragment"
-        tools:layout="@layout/activity_random_fragment" >
-        <action
-            android:id="@+id/main8"
-            app:destination="@id/menuFragment" />
+        android:label="RandomFragment"
+        tools:layout="@layout/fragment_random" >
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.login_keeper1.SettingsFragment"
-        android:label="activity_settings_fragment"
-        tools:layout="@layout/activity_settings_fragment" >
-        <action
-            android:id="@+id/main9"
-            app:destination="@id/menuFragment" />
+        android:label="SettingsFragment"
+        tools:layout="@layout/fragment_settings" >
     </fragment>
 </navigation>
