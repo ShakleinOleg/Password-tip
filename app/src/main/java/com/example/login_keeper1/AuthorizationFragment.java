@@ -6,16 +6,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.login_keeper1.storage.RoomPasswordsStorage;
+import com.example.login_keeper1.storage.entities.AuthEntity;
+
 public class AuthorizationFragment extends Fragment {
-    private EditText mLoginInput;
     private EditText mPasswordInput;
     private Button mRegisterButton;
+    private RoomPasswordsStorage mStorage;
 
     @Nullable
     @Override
@@ -23,7 +27,6 @@ public class AuthorizationFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_login, container, false);
 
-        mLoginInput = view.findViewById(R.id.login);
         mPasswordInput = view.findViewById(R.id.password);
         mRegisterButton = view.findViewById(R.id.register);
 
@@ -38,8 +41,8 @@ public class AuthorizationFragment extends Fragment {
             }
         });
 
-        // we no need to have different layouts for login and register page since they have the same layout
-        // we need just to update login button text
+        mStorage = ((LoginKeeperApplication) getContext().getApplicationContext()).provideStorage();
+
         updateLoginButtonText();
 
         return view;
@@ -53,31 +56,34 @@ public class AuthorizationFragment extends Fragment {
         }
     }
 
-    // This method should check if user is registered.
     private boolean isRegistered() {
-        return true;
+        return mStorage.auth() != null;
     }
 
     private void handleLoginAction() {
-        // Here we need to validate entered credentials
-        // need to check database is entered credentials is valid
-
-        String login = mLoginInput.getText().toString();
+        AuthEntity entity = mStorage.auth();
         String password = mPasswordInput.getText().toString();
 
-        // if validation is OK we need to show next screen
-        // if validation is failed we need show some kind of error to user
-        navigateToMainPageFragment();
+        if (entity.password.equals(password)) {
+            navigateToMainPageFragment();
+        } else {
+            Toast.makeText(getContext(), "Wrong password", Toast.LENGTH_LONG).show();
+        }
     }
 
     private void handleRegisterAction() {
-        // Here we need to validate entered credentials
-
-        String login = mLoginInput.getText().toString();
         String password = mPasswordInput.getText().toString();
 
-        // if validation is OK we need to show next screen
-        // if validation is failed we need show some kind of error to user
+        if (password.length() < 4) {
+            Toast.makeText(getContext(), "Password to short", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        AuthEntity entity = new AuthEntity();
+        entity.password = password;
+
+        mStorage.putAuth(entity);
+
         navigateToMainPageFragment();
     }
 
