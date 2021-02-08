@@ -1,11 +1,14 @@
 package com.example.login_keeper1;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -33,11 +36,21 @@ public class AuthorizationFragment extends Fragment {
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isRegistered()) {
-                    handleLoginAction();
-                } else {
-                    handleRegisterAction();
+                processLoginAction();
+            }
+        });
+
+
+        mPasswordInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+
+                if (actionId == EditorInfo.IME_ACTION_SEND) {
+                    processLoginAction();
+                    return true;
                 }
+
+                return false;
             }
         });
 
@@ -46,6 +59,14 @@ public class AuthorizationFragment extends Fragment {
         updateLoginButtonText();
 
         return view;
+    }
+
+    private void processLoginAction() {
+        if (isRegistered()) {
+            handleLoginAction();
+        } else {
+            handleRegisterAction();
+        }
     }
 
     private void updateLoginButtonText() {
