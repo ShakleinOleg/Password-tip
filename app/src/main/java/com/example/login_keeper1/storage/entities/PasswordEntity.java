@@ -19,5 +19,5 @@ public class PasswordEntity {
     public String website;
 
     @ColumnInfo(name = "password")
-    public String password;
+    public byte[] password;
 }

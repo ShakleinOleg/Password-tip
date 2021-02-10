@@ -5,12 +5,9 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
@@ -20,13 +17,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.login_keeper1.storage.RoomPasswordsStorage;
 import com.example.login_keeper1.storage.entities.PasswordEntity;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.google.crypto.tink.Aead;
+import com.google.crypto.tink.KeysetHandle;
 
+import java.security.GeneralSecurityException;
 import java.util.List;
 
 public class MainPageFragment extends Fragment {
     private RecyclerView mRecyclerView;
-//    private Button mNewRecordButton;
+    private FloatingActionButton mNewRecordButton;
     private PasswordListAdapter mAdapter;
     private RoomPasswordsStorage mStorage;
     private MaterialToolbar mToolbar;
@@ -43,17 +44,21 @@ public class MainPageFragment extends Fragment {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(layoutManager);
-        mAdapter = new PasswordListAdapter();
+
+        LoginKeeperApplication appContext = ((LoginKeeperApplication) getContext().getApplicationContext());
+        mStorage = appContext.provideStorage();
+
+        mAdapter = new PasswordListAdapter(aead(), mStorage.auth().password.getBytes());
         mRecyclerView.setAdapter(mAdapter);
 
-//        mNewRecordButton = view.findViewById(R.id.newRecord);
+        mNewRecordButton = view.findViewById(R.id.newRecordButton);
 
-//        mNewRecordButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                navigateToNewRecordFragment();
-//            }
-//        });
+        mNewRecordButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigateToRandomFragment();
+            }
+        });
 
         mDrawer = view.findViewById(R.id.drawerLayout);
         mDrawerNavigation = view.findViewById(R.id.drawerNavigation);
@@ -79,7 +84,8 @@ public class MainPageFragment extends Fragment {
                     case R.id.changePassword:
                         navigateToChangePasswordFragment();
                         return true;
-                    default: return false;
+                    default:
+                        return false;
                 }
             }
         });
@@ -88,16 +94,20 @@ public class MainPageFragment extends Fragment {
         return view;
     }
 
-    private void populateListView() {
-        LoginKeeperApplication appContext = ((LoginKeeperApplication) getContext().getApplicationContext());
-        mStorage = appContext.provideStorage();
-
-        List<PasswordEntity> entities = mStorage.passwords();
-        mAdapter.submit(entities);
+    private Aead aead() {
+        try {
+            KeysetHandle keysetHandle = CryptUtils.keysetHandle(getContext());
+            ;
+            return keysetHandle.getPrimitive(Aead.class);
+        } catch (GeneralSecurityException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
-    private void navigateToNewRecordFragment() {
-        NavHostFragment.findNavController(this).navigate(R.id.action_mainPageFragment_to_newRecordFragment);
+    private void populateListView() {
+        List<PasswordEntity> entities = mStorage.passwords();
+        mAdapter.submit(entities);
     }
 
     private void navigateToSettingsFragment() {

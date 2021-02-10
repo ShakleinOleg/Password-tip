@@ -24,4 +24,6 @@
     <string name="generate_password">Generate password</string>
     <string name="settings">Settings</string>
     <string name="change_password">Change password</string>
+
+    <string name="generated_length">Length: %d</string>
 </resources>

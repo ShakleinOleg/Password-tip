@@ -15,6 +15,13 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.login_keeper1.storage.RoomPasswordsStorage;
 import com.example.login_keeper1.storage.entities.AuthEntity;
+import com.example.login_keeper1.storage.entities.PasswordEntity;
+import com.google.crypto.tink.Aead;
+import com.google.crypto.tink.KeysetHandle;
+
+import java.security.GeneralSecurityException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PasswordFragment extends Fragment {
 
@@ -52,7 +59,8 @@ public class PasswordFragment extends Fragment {
     private void updatePassword() {
         AuthEntity entity = mStorage.auth();
 
-        if (!entity.password.equals(mOldPasswordInput.getText().toString())) {
+        String oldPassword = mOldPasswordInput.getText().toString();
+        if (!entity.password.equals(oldPassword)) {
             Toast.makeText(getContext(), "Entered password doesnt match our records", Toast.LENGTH_LONG).show();
             return;
         }
@@ -65,11 +73,59 @@ public class PasswordFragment extends Fragment {
             return;
         }
 
+        try {
+            updateGeneratedPasswords(oldPassword, newPassword);
+        } catch (GeneralSecurityException e) {
+            e.printStackTrace();
+            throw new RuntimeException();
+        }
+
+        mStorage.deleteAuth();
         AuthEntity newAuth = new AuthEntity();
 
         newAuth.password = newPassword;
         mStorage.putAuth(newAuth);
         navigateToMenuFragment();
+    }
+
+    private void updateGeneratedPasswords(String oldPassword, String newPassword) throws GeneralSecurityException {
+        byte[] oldAssociatedData = oldPassword.getBytes();
+        byte[] newAssociatedData = newPassword.getBytes();
+
+        KeysetHandle keysetHandle = CryptUtils.keysetHandle(getContext());
+        Aead aead = keysetHandle.getPrimitive(Aead.class);
+
+        List<PasswordEntity> storedData = mStorage.passwords();
+        List<PasswordEntity> updatedData = new ArrayList<>();
+
+        for (int i = 0; i < storedData.size(); i++) {
+            PasswordEntity entity = storedData.get(i);
+
+            byte[] decryptedPassword = decryptPassword(aead, entity.password, oldAssociatedData);
+            entity.password = encryptPassword(aead, decryptedPassword, newAssociatedData);
+            updatedData.add(entity);
+        }
+
+        mStorage.putPasswords(updatedData);
+    }
+
+
+    private byte[] encryptPassword(Aead aead, byte[] password, byte[] associatedData) {
+        try {
+            return aead.encrypt(password, associatedData);
+        } catch (GeneralSecurityException e) {
+            e.printStackTrace();
+        }
+        return new byte[0];
+    }
+
+    private byte[] decryptPassword(Aead aead, byte[] password, byte[] associatedData) {
+        try {
+            return aead.decrypt(password, associatedData);
+        } catch (GeneralSecurityException e) {
+            e.printStackTrace();
+            throw new RuntimeException();
+        }
     }
 
     private void navigateToMenuFragment() {

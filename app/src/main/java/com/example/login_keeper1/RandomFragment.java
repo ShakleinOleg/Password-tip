@@ -9,12 +9,16 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+
+import com.example.login_keeper1.RandomFragmentDirections.ActionRandomFragmentToNewRecordFragment;
+import com.google.android.material.appbar.MaterialToolbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +33,10 @@ public class RandomFragment extends Fragment {
     private SwitchCompat mSpecialCharSwitch;
     private SwitchCompat mCustomCharsetSwitch;
     private EditText mWordInput;
-    private Button mRegisterButton;
+    private MaterialToolbar mToolbar;
+    private Button mCopyButton;
+    private Button mSaveButton;
+    private TextView mPasswordLength;
 
     @Nullable
     @Override
@@ -46,7 +53,19 @@ public class RandomFragment extends Fragment {
         mSpecialCharSwitch = view.findViewById(R.id.specialCharsSwitch);
         mCustomCharsetSwitch = view.findViewById(R.id.customCharsetSwitch);
         mWordInput = view.findViewById(R.id.wordInput);
-        mRegisterButton = view.findViewById(R.id.register);
+        mCopyButton = view.findViewById(R.id.copyButton);
+        mSaveButton = view.findViewById(R.id.saveButton);
+        mToolbar = view.findViewById(R.id.materialToolbar);
+        mPasswordLength = view.findViewById(R.id.passwordLength);
+
+        mToolbar = view.findViewById(R.id.materialToolbar);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(RandomFragment.this).popBackStack();
+            }
+        });
+
 
         setCustomSwitchListener();
         setSelectionRequiredListener();
@@ -58,14 +77,53 @@ public class RandomFragment extends Fragment {
             }
         });
 
-        mRegisterButton.setOnClickListener(new View.OnClickListener() {
+        mCopyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navigateToMenuFragment();
+                ClipboardUtils.copyToClipboard(getContext(), "Generated password ", mPasswordTitle.getText().toString());
+                Toast.makeText(getContext(), "Copied to clipboard", Toast.LENGTH_SHORT).show();
             }
         });
 
+        mSaveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigateToAddRecord();
+            }
+        });
+
+        boolean isEnabled = !mPasswordTitle.getText().toString().isEmpty();
+        mCopyButton.setEnabled(isEnabled);
+        mSaveButton.setEnabled(isEnabled);
+
+        addPasswordLengthListener();
+        updatePasswordLengthTitle(mLentBar.getProgress());
+
         return view;
+    }
+
+    private void addPasswordLengthListener() {
+        mLentBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                updatePasswordLengthTitle(progress);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                updatePasswordLengthTitle(seekBar.getProgress());
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                updatePasswordLengthTitle(seekBar.getProgress());
+            }
+        });
+    }
+
+    private void updatePasswordLengthTitle(int progress) {
+        String lengthString = getContext().getString(R.string.generated_length, progress + 1);
+        mPasswordLength.setText(lengthString);
     }
 
     private void setSelectionRequiredListener() {
@@ -127,14 +185,16 @@ public class RandomFragment extends Fragment {
         PasswordGenerator generator = createGenerator();
         String generatedPassword = generator.generate();
         mPasswordTitle.setText(generatedPassword);
+        mCopyButton.setEnabled(true);
+        mSaveButton.setEnabled(true);
     }
 
     private PasswordGenerator createGenerator() {
         if (mCustomCharsetSwitch.isChecked()) {
-            return new PasswordGenerator(mLentBar.getProgress(), mWordInput.getText().toString());
+            return new PasswordGenerator(mLentBar.getProgress() + 1, mWordInput.getText().toString());
         } else {
             return new PasswordGenerator(
-                    mLentBar.getProgress(),
+                    mLentBar.getProgress() + 1,
                     mUpperCaseSwitch.isChecked(),
                     mLowerCaseSwitch.isChecked(),
                     mSpecialCharSwitch.isChecked(),
@@ -143,8 +203,10 @@ public class RandomFragment extends Fragment {
         }
     }
 
-    private void navigateToMenuFragment() {
-        NavHostFragment.findNavController(this).popBackStack();
+    private void navigateToAddRecord() {
+        ActionRandomFragmentToNewRecordFragment action = RandomFragmentDirections.actionRandomFragmentToNewRecordFragment();
+        action.setGeneratedPassword(mPasswordTitle.getText().toString());
+        NavHostFragment.findNavController(this).navigate(action);
     }
 
     private class CompositeOnCheckedChangeListener implements CompoundButton.OnCheckedChangeListener {

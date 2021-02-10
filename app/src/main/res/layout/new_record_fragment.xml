@@ -9,17 +9,18 @@
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar1"
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/materialToolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            app:menu="@menu/new_record_menu"
+            app:navigationIcon="@drawable/ic_baseline_arrow_back">
+        </com.google.android.material.appbar.MaterialToolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
@@ -114,25 +115,4 @@
         app:layout_constraintStart_toStartOf="@+id/titleCaption"
         app:layout_constraintTop_toBottomOf="@+id/passwordCaption" />
 
-    <Button
-        android:id="@+id/addRecord"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginBottom="60dp"
-        android:text="Add to the database"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        android:text="Go back"
-        app:layout_constraintBottom_toBottomOf="@+id/addRecord"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/addRecord" />
 </androidx.constraintlayout.widget.ConstraintLayout>
