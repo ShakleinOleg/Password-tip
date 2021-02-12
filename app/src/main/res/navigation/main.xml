@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    app:startDestination="@id/authorizationFragment">
+
+    <fragment
+        android:id="@+id/authorizationFragment"
+        android:name="com.example.login_keeper1.AuthorizationFragment"
+        android:label="AuthorizationFragment" >
+        <action
+            android:id="@+id/action_authorizationFragment_to_mainPageFragment"
+            app:destination="@id/mainPageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainPageFragment"
+        android:name="com.example.login_keeper1.MainPageFragment"
+        android:label="MainPageFragment"
+        tools:layout="@layout/fragment_main_page">
+
+        <action
+            android:id="@+id/action_menu_to_randomFragment"
+            app:destination="@id/randomFragment"
+            app:popUpTo="@id/mainPageFragment" />
+        <action
+            android:id="@+id/action_menu_to_settingsFragment"
+            app:destination="@id/settingsFragment"
+            app:popUpTo="@id/mainPageFragment" />
+        <action
+            android:id="@+id/action_menu_to_passwordFragment"
+            app:destination="@id/passwordFragment"
+            app:popUpTo="@id/mainPageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newRecordFragment"
+        android:name="com.example.login_keeper1.NewRecordFragment"
+        android:label="NewRecordFragment"
+        tools:layout="@layout/new_record_fragment" >
+
+        <argument
+            android:name="generatedPassword"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/passwordFragment"
+        android:name="com.example.login_keeper1.PasswordFragment"
+        android:label="PasswordFragment"
+        tools:layout="@layout/fragment_change_password" >
+    </fragment>
+    <fragment
+        android:id="@+id/randomFragment"
+        android:name="com.example.login_keeper1.RandomFragment"
+        android:label="RandomFragment"
+        tools:layout="@layout/fragment_random" >
+        <action
+            android:id="@+id/action_randomFragment_to_newRecordFragment"
+            app:destination="@id/newRecordFragment"
+            app:popUpTo="@id/mainPageFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.login_keeper1.SettingsFragment"
+        android:label="SettingsFragment"
+        tools:layout="@layout/fragment_settings" >
+    </fragment>
+</navigation>
