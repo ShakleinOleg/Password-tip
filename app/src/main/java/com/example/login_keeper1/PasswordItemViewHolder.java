@@ -17,6 +17,7 @@ import java.security.GeneralSecurityException;
 
 public class PasswordItemViewHolder extends RecyclerView.ViewHolder {
     private final TextView mWebsiteName;
+    private final TextView mLoginName;
     private final TextView mPasswordField;
     private final Button mCopyButton;
     private final ToggleButton mShowPassword;
@@ -28,6 +29,7 @@ public class PasswordItemViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
 
         mWebsiteName = itemView.findViewById(R.id.websiteName);
+        mLoginName = itemView.findViewById(R.id.loginView);
         mPasswordField = itemView.findViewById(R.id.passwordField);
         mCopyButton = itemView.findViewById(R.id.copyButton);
         mShowPassword = itemView.findViewById(R.id.showPassword);
@@ -50,6 +52,7 @@ public class PasswordItemViewHolder extends RecyclerView.ViewHolder {
     void bindTo(PasswordEntity entity) {
         mModel = entity;
         mWebsiteName.setText(entity.website);
+        mLoginName.setText(entity.username);
         updatePasswordField(!mShowPassword.isChecked());
     }
 
